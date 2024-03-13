@@ -1,0 +1,58 @@
+<div mat-dialog-title class="text-center">
+    <div class="flex items-center">
+        Agregar Proveedor
+    </div>
+</div>
+<div class="ui-modal-body">
+    <div class="container mt-5">
+        <div class="content-info mt-5">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <mat-form-field floatLabel="always" appearance="outline">
+                        <mat-label>Tipo Producto</mat-label>
+                        <mat-select [formControl]="idProviderControl" placeholder="Proveedor">
+                            <mat-option *ngFor="let item of providersResult" [value]="item.id">
+                                {{item.nombre_Proveedor}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="idProviderControl?.errors && idProviderControl?.errors?.['required']">Field is
+                            required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 text-right">
+                    <mat-form-field floatLabel="always" appearance="outline">
+                        <mat-label>Clave Producto</mat-label>
+                        <input [formControl]="providerCodeControl" matInput>
+                        <mat-error
+                            *ngIf="providerCodeControl?.errors && providerCodeControl?.errors?.['required']">Field
+                            is
+                            required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <mat-form-field floatLabel="always" appearance="outline">
+                        <mat-label>Precio</mat-label>
+                        <input [formControl]="priceControl" matInput>
+                        <mat-error *ngIf="priceControl?.errors && priceControl?.errors?.['required']">Field is
+                            required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 text-right">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div mat-dialog-actions class="footer m-2">
+    <button class="search-btn mt-2 text-center" mat-fab extended color="warn" (click)="onCancel()">
+        Cancelar
+    </button>
+    <button [disabled]="!requiredFielsdAndValid" class="search-btn mt-2 text-center" mat-fab extended color="primary"
+        (click)="onAdd()">
+        Crear Producto
+    </button>
+</div>

@@ -1,0 +1,53 @@
+<div mat-dialog-title class="text-center">
+    <div class="flex items-center">
+        Agregar Producto
+    </div>
+</div>
+<div class="ui-modal-body">
+    <div class="container mt-5">
+        <div class="content-info mt-5">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <mat-form-field floatLabel="always" appearance="outline">
+                        <mat-label>Nombre Producto</mat-label>
+                        <input [formControl]="productNameControl" matInput>
+                        <mat-error *ngIf="productNameControl?.errors && productNameControl?.errors?.['required']">Field
+                            is
+                            required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 text-right">
+                    <mat-form-field floatLabel="always" appearance="outline">
+                        <mat-label>Clave Producto</mat-label>
+                        <input [formControl]="productCodeControl" matInput>
+                        <mat-error *ngIf="productCodeControl?.errors && productCodeControl?.errors?.['required']">Field
+                            is
+                            required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <mat-form-field floatLabel="always" appearance="outline">
+                        <mat-label>Precio</mat-label>
+                        <input [formControl]="priceControl" matInput>
+                        <mat-error *ngIf="priceControl?.errors && priceControl?.errors?.['required']">Field is
+                            required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 text-right">
+                    <app-dropdown [control]="productTypeControl"></app-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div mat-dialog-actions class="footer m-2">
+    <button class="search-btn mt-2 text-center" mat-fab extended color="warn" (click)="onCancel()">
+        Cancelar
+    </button>
+    <button [disabled]="!requiredFielsdAndValid" class="search-btn mt-2 text-center" mat-fab extended color="primary" (click)="onAdd()">
+        Crear Producto
+    </button>
+</div>

@@ -1,0 +1,10 @@
+<mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>Tipo Producto</mat-label>
+    <mat-select [formControl]="control" placeholder="Tipo de Producto">
+        <mat-option *ngFor="let filter of filters" [value]="filter.id">
+            {{filter.nombre}}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="control?.errors && control?.errors?.['required']">Field is
+        required</mat-error>
+</mat-form-field>
